@@ -6,5 +6,11 @@
         </router-link>
         <router-link :to="{ name: 'books.create' }">Nieuw Boek</router-link>
     </nav>
+
+    <nav>
+        <router-link :to="{ name: 'authors.overview' }">
+            Author overzicht
+        </router-link>
+    </nav>
     <router-view></router-view>
 </template>
