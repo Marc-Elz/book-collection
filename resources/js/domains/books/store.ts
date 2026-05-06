@@ -1,7 +1,13 @@
 import axios from "axios";
 import { ref, computed } from "vue";
 
-const books = ref([]);
+interface bookType {
+    id: number;
+    title: string;
+    summary: string;
+}
+
+const books = ref<bookType[]>([]);
 
 export const getAllBooks = computed(() => books.value);
 
