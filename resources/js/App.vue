@@ -1,1 +1,9 @@
-<template><h1>Hello World!</h1></template>
+<template>
+    <h1>Hello World!</h1>
+    <nav>
+        <router-link :to="{ name: 'books.overview' }">
+            Boeken Overzicht
+        </router-link>
+        <router-link :to="{ name: 'books.create' }">Nieuw Boek</router-link>
+    </nav>
+</template>
