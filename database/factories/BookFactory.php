@@ -19,7 +19,7 @@ class BookFactory extends Factory
     {
         return [
             'title' => $this->faker->word,
-            'description' => $this->faker->sentence,
+            'summary' => $this->faker->sentence,
         ];
     }
 }
