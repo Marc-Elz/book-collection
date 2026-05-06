@@ -6,4 +6,5 @@
         </router-link>
         <router-link :to="{ name: 'books.create' }">Nieuw Boek</router-link>
     </nav>
+    <router-view></router-view>
 </template>
