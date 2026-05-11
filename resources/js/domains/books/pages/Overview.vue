@@ -19,6 +19,5 @@
 import { onMounted } from "vue";
 import { fetchBooks, getAllBooks } from "../store";
 
-console.log("fetch books..?");
 fetchBooks();
 </script>
