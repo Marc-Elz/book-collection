@@ -11,6 +11,7 @@ export interface bookType {
 const books = ref<bookType[]>([]);
 
 export const getAllBooks = computed(() => books.value);
+export const getBookById = (id:number|string|string[]) => computed(() => books.value.find(book => book.id == id));
 
 export const fetchBooks = async () => {
     const { data } = await axios.get("/api/books");
@@ -22,5 +23,11 @@ export const fetchBooks = async () => {
 export const createBook = async (newBook:bookType) => {
     const {data} = await axios.post('/api/books', newBook);
     if(!data) return
+    books.value = data;
+};
+
+export const updateBook = async (id:number|string|string[], updatedBook:bookType) => {
+    const { data } = await axios.put(`/api/books/${id}`, updatedBook);
+    if (!data) return;
     books.value = data;
 };
