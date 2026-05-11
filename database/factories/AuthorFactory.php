@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Author;
-use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +19,6 @@ class AuthorFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'book_id' => Book::inRandomOrder()->first()->id,
         ];
     }
 }
