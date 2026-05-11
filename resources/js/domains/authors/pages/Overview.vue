@@ -8,6 +8,7 @@
         <tbody>
             <tr v-for="author in getAllAuthors" :key="author.id">
                 <td>{{ author.name }}</td>
+                <router-link :to="{ name: 'authors.edit', params: { id: author.id } }">Bewerk</router-link>
             </tr>
         </tbody>
     </table>
