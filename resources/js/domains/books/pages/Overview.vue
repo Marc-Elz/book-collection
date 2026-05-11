@@ -13,6 +13,7 @@
                 <td>{{ book.summary }}</td>
                 <td>{{ book.author_id }}</td>
                 <router-link :to="{ name: 'books.edit', params: { id: book.id } }">Bewerk</router-link>
+                <button @click="deleteBook(book.id)">Verwijder</button>
             </tr>
         </tbody>
     </table>
@@ -20,7 +21,7 @@
 
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { fetchBooks, getAllBooks } from "../store";
+import { fetchBooks, getAllBooks, deleteBook} from "../store";
 
 fetchBooks();
 </script>

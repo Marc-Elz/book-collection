@@ -31,3 +31,8 @@ export const updateBook = async (id:number|string|string[], updatedBook:bookType
     if (!data) return;
     books.value = data;
 };
+
+export const deleteBook = async (id:number) => {
+    await axios.delete(`/api/books/${id}`);
+    books.value = books.value.filter(book => book.id !== id);
+};
