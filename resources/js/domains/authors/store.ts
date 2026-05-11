@@ -37,7 +37,7 @@ export const deleteAuthor = async (id:number) => {
     try {
         await deleteRequest(`/authors/${id}`);
         authors.value = authors.value.filter(author => author.id !== id);
-    }catch(error){
+    }catch(error: any){
         console.error(error.response.value);
     }
 }
