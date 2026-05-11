@@ -38,9 +38,6 @@ class AuthorController extends Controller
 
         try {
             $author_books = Book::where('author_id', '=', $author->id)->get();
-            error_log($author);
-            error_log($author_books);
-            error_log($author_books->isEmpty());
             if (!$author_books->isEmpty()) {
                 error_log('Error: Auteur heeft boeken');
                 return response()->json(["message" => 'Error: Auteur heeft boeken']);
