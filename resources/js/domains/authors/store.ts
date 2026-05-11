@@ -1,5 +1,7 @@
 import axios from "axios";
 import { ref, computed } from "vue";
+import { getRequest, postRequest, putRequest, deleteRequest } from '../../services/http';
+
 
 export interface authorType {
     id: number;
@@ -13,27 +15,27 @@ export const getAuthorById = (id:number|string|string[]) => computed(() => autho
 
 
 export const fetchAuthors = async () => {
-    const { data } = await axios.get("/api/authors");
+    const { data } = await getRequest("/authors");
 
     if (!data) return;
     authors.value = data;
 };
 
 export const createAuthor = async (newAuthor:authorType) => {
-    const {data} = await axios.post('/api/authors', newAuthor);
+    const {data} = await postRequest('/authors', newAuthor);
     if(!data) return
     authors.value = data;
 }
 
 export const updateAuthor = async (id:number|string|string[], updatedAuthor:authorType) => {
-    const { data } = await axios.put(`/api/authors/${id}`, updatedAuthor);
+    const { data } = await putRequest(`/authors/${id}`, updatedAuthor);
     if (!data) return;
     authors.value = data;
 }
 
 export const deleteAuthor = async (id:number) => {
     try {
-        await axios.delete(`/api/authors/${id}`);
+        await deleteRequest(`/authors/${id}`);
         authors.value = authors.value.filter(author => author.id !== id);
     }catch(error){
         console.error(error.response.value);
