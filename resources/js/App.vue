@@ -5,6 +5,7 @@
             Boeken Overzicht
         </router-link>
         <router-link :to="{ name: 'books.create' }">Nieuw Boek</router-link>
+        <router-link :to="{name: 'books.create'}">Nieuw boek toevoegen</router-link>
     </nav>
 
     <nav>
