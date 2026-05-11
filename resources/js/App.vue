@@ -12,6 +12,7 @@
         <router-link :to="{ name: 'authors.overview' }">
             Author overzicht
         </router-link>
+        <router-link :to="{ name: 'authors.create' }">Nieuwe Auteur</router-link>
     </nav>
     <router-view></router-view>
 </template>

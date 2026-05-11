@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ref, computed } from "vue";
 
-interface authorType {
+export interface authorType {
     id: number;
     name: string;
 }
@@ -16,3 +16,10 @@ export const fetchAuthors = async () => {
     if (!data) return;
     authors.value = data;
 };
+
+export const createAuthor = async (newAuthor:authorType)=> {
+    const {data} = await axios.post('/api/authors', newAuthor);
+    if(!data) return
+    authors.value = data;
+
+}
