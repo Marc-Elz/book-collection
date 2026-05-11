@@ -1,7 +1,6 @@
-import axios from "axios";
-import { ref, computed } from "vue";
-import { getRequest, postRequest, putRequest, deleteRequest } from '../../services/http';
+import { storeModuleFactory } from '../../services/store';
 
+// TODO use typing in storemodulefacotry
 export interface bookType {
     id: number;
     title: string;
@@ -9,31 +8,24 @@ export interface bookType {
     author_id: number;
 }
 
-const books = ref<bookType[]>([]);
+const bookStore = storeModuleFactory('books');
 
-export const getAllBooks = computed(() => books.value);
-export const getBookById = (id:number|string|string[]) => computed(() => books.value.find(book => book.id == id));
+
+export const getAllBooks = bookStore.getters.all;
+export const getBookById = bookStore.getters.getById;
 
 export const fetchBooks = async () => {
-    const { data } = await getRequest('/books');
-
-    if (!data) return;
-    books.value = data;
+    bookStore.actions.getAll();
 };
 
 export const createBook = async (newBook:bookType) => {
-    const {data} = await postRequest('/books', newBook);
-    if(!data) return
-    books.value = data;
+    bookStore.actions.create(newBook);
 };
 
 export const updateBook = async (id:number|string|string[], updatedBook:bookType) => {
-    const { data } = await putRequest(`/books/${id}`, updatedBook);
-    if (!data) return;
-    books.value = data;
+    bookStore.actions.update(id, updatedBook);
 };
 
 export const deleteBook = async (id:number) => {
-    await deleteRequest(`/books/${id}`);
-    books.value = books.value.filter(book => book.id !== id);
+    bookStore.actions.delete(id);
 };
