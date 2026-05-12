@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { getErrorByProperty, getMessage } from '../../../services/error';
+import { getErrorByProperty, getMessage } from '../services/error';
 
 const displayMessage = getMessage;
 

@@ -24,8 +24,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { fetchAuthors, getAllAuthors } from '../../authors/store';
-import FormError from '../../authors/components/FormError.vue';
-import ErrorMessage from '../../authors/components/ErrorMessage.vue';
+import FormError from '../../../components/FormError.vue';
+import ErrorMessage from '../../../components/ErrorMessage.vue';
 
 // Fetch authors when component is mounted
 fetchAuthors();

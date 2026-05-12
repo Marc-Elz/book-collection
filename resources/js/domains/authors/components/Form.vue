@@ -11,8 +11,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import FormError from '../components/FormError.vue';
-import ErrorMessage from './ErrorMessage.vue';
+import FormError from '../../../components/FormError.vue';
+import ErrorMessage from '../../../components/ErrorMessage.vue';
 
 const props = defineProps({ author: Object });
 
