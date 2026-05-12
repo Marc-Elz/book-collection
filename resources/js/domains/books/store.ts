@@ -15,17 +15,17 @@ export const getAllBooks = bookStore.getters.all;
 export const getBookById = bookStore.getters.getById;
 
 export const fetchBooks = async () => {
-    bookStore.actions.getAll();
+    return await bookStore.actions.getAll();
 };
 
 export const createBook = async (newBook:bookType) => {
-    bookStore.actions.create(newBook);
+    return await bookStore.actions.create(newBook);
 };
 
 export const updateBook = async (id:number|string|string[], updatedBook:bookType) => {
-    bookStore.actions.update(id, updatedBook);
+    return await bookStore.actions.update(id, updatedBook);
 };
 
 export const deleteBook = async (id:number) => {
-    bookStore.actions.delete(id);
+    return await bookStore.actions.delete(id);
 };
