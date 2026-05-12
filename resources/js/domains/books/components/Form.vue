@@ -1,10 +1,13 @@
 <template>
+
     <form @submit.prevent="handleSubmit">
         <label>Titel:</label>
         <input v-model="form.title" type="text" required />
+        <FormError :name="'title'" />
 
         <label>Samenvatting:</label>
         <textarea v-model="form.summary" required></textarea>
+        <FormError :name="'summary'" />
 
         <label>Auteur:</label>
         <select v-model="form.author_id" required>
@@ -12,6 +15,7 @@
                 {{ author.name }}
             </option>
         </select>
+        <FormError :name="'author_id'" />
 
         <button type="submit">Opslaan</button>
     </form>
@@ -20,6 +24,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { fetchAuthors, getAllAuthors } from '../../authors/store';
+import FormError from '../../authors/components/FormError.vue';
 
 // Fetch authors when component is mounted
 fetchAuthors();

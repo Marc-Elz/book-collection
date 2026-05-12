@@ -1,4 +1,5 @@
 <template>
+     <FormError :name="'name'" />
     <form @submit.prevent="handleSubmit">
         <label>Name:</label>
         <input v-model="form.name" type="text" required />
@@ -9,6 +10,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import FormError from '../components/FormError.vue'
 
 const props = defineProps({ author: Object });
 
