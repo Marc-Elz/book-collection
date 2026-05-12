@@ -31,5 +31,6 @@ export const deleteAuthor = async (id:number) => {
     }catch(error: any){
         console.error('Error deleting author');
         console.error(error.response.value);
+        throw error;
     }
 }

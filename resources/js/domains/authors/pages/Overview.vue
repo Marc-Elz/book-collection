@@ -1,4 +1,6 @@
 <template>
+    <ErrorMessage />
+
     <table>
         <thead>
             <tr>
@@ -18,6 +20,7 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { fetchAuthors, getAllAuthors, deleteAuthor } from "../store";
+import ErrorMessage from '../components/ErrorMessage.vue';
 
 fetchAuthors();
 </script>
