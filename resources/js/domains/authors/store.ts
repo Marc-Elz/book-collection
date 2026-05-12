@@ -18,7 +18,7 @@ export const fetchAuthors = async () => {
 };
 
 export const createAuthor = async (newAuthor:authorType) => {
-    authorStore.actions.create(newAuthor);
+    return authorStore.actions.create(newAuthor);
 }
 
 export const updateAuthor = async (id:number|string|string[], updatedAuthor:authorType) => {
