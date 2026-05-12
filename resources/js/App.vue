@@ -1,5 +1,6 @@
 <template>
     <h1>Book Collection</h1>
+    <br/>
     <nav>
         <router-link :to="{ name: 'books.overview' }">
             Boeken Overzicht

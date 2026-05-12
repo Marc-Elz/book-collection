@@ -11,6 +11,7 @@
             <tr v-for="author in getAllAuthors" :key="author.id">
                 <td>{{ author.name }}</td>
                 <router-link :to="{ name: 'authors.edit', params: { id: author.id } }">Bewerk</router-link>
+                <ErrorMessage />
                 <button @click="deleteAuthor(author.id)">Verwijder</button>
             </tr>
         </tbody>
