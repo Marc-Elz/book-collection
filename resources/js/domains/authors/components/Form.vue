@@ -1,8 +1,9 @@
 <template>
-     <FormError :name="'name'" />
+    <ErrorMessage />
     <form @submit.prevent="handleSubmit">
         <label>Name:</label>
         <input v-model="form.name" type="text" required />
+        <FormError :name="'name'" />
 
         <button type="submit">Opslaan</button>
     </form>
@@ -10,7 +11,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import FormError from '../components/FormError.vue'
+import FormError from '../components/FormError.vue';
+import ErrorMessage from './ErrorMessage.vue';
 
 const props = defineProps({ author: Object });
 

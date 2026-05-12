@@ -1,7 +1,6 @@
 <template>
     <div v-for="error in getErrorByProperty(name).value" :key="error">
-        {{ displayMessage }}
-        Error:{{ error }}
+        {{ error }}
     </div>
 </template>
 

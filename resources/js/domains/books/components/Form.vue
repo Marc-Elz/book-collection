@@ -1,5 +1,5 @@
 <template>
-
+    <ErrorMessage />
     <form @submit.prevent="handleSubmit">
         <label>Titel:</label>
         <input v-model="form.title" type="text" required />
@@ -25,6 +25,7 @@
 import { ref } from 'vue';
 import { fetchAuthors, getAllAuthors } from '../../authors/store';
 import FormError from '../../authors/components/FormError.vue';
+import ErrorMessage from '../../authors/components/ErrorMessage.vue';
 
 // Fetch authors when component is mounted
 fetchAuthors();
