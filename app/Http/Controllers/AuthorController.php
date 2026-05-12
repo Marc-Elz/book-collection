@@ -34,19 +34,12 @@ class AuthorController extends Controller
 
     public function destroy(Author $author)
     {
-        // validate author does not have books
-
-        try {
-            $author_books = Book::where('author_id', '=', $author->id)->get();
-            if (!$author_books->isEmpty()) {
-                error_log('Error: Auteur heeft boeken');
-                return response()->json(["message" => 'Error: Auteur heeft boeken']);
-            }
-            error_log('Auteur succesvol verwijderd');
-            $author->delete();
-            return response()->json(["message" => 'Auteur succesvol verwijderd']);
-        } catch (Exception $e) {
-            error_log($e->getMessage());
+        if ($author->books()->exists()) {
+            throw new HttpResponseException(response()->json([
+                'message' => 'Deze auteur kan niet worden verwijderd omdat er nog boeken aan gekoppeld zijn.'
+            ], 422));
         }
+
+        $author->delete();
     }
 }
