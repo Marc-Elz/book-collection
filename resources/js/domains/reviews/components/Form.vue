@@ -27,7 +27,7 @@ import FormError from "../../../components/FormError.vue";
 import ErrorMessage from "../../../components/ErrorMessage.vue";
 import { fetchBooks, getAllBooks } from "../../books/store";
 
-// Fetch authors when component is mounted
+// Fetch books when component is mounted
 fetchBooks();
 
 const props = defineProps({ review: Object });
