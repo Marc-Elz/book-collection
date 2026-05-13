@@ -1,9 +1,5 @@
 import { storeModuleFactory } from "../../services/store";
-
-export interface authorType {
-    id: number;
-    name: string;
-}
+import { authorType } from "../../services/store/storetypes";
 
 const authorStore = storeModuleFactory("authors");
 
@@ -19,7 +15,7 @@ export const createAuthor = async (newAuthor: authorType) => {
 };
 
 export const updateAuthor = async (
-    id: number | string | string[],
+    id: number | string,
     updatedAuthor: authorType,
 ) => {
     return await authorStore.actions.update(id, updatedAuthor);

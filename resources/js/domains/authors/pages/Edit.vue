@@ -6,20 +6,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import Form from '../components/Form.vue';
-import { authorType, fetchAuthors, getAuthorById, updateAuthor } from '../store';
+import { ref, onMounted, computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import Form from "../components/Form.vue";
+import { fetchAuthors, getAuthorById, updateAuthor } from "../store";
+import { authorType } from "../../../services/store/storetypes";
 
 const route = useRoute();
 const router = useRouter();
 
 fetchAuthors();
 
-const author = getAuthorById(route.params.id);
+const author = getAuthorById(route.params.id as string | number);
 
 const handleSubmit = async (data: authorType) => {
-    await updateAuthor(route.params.id, data);
-    router.push({ name: 'authors.overview' });
+    await updateAuthor(route.params.id as string | number, data);
+    router.push({ name: "authors.overview" });
 };
 </script>

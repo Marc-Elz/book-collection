@@ -10,7 +10,7 @@ import Form from "../components/Form.vue";
 import { createReview } from "../store";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import type { reviewType } from "../store";
+import { reviewType } from "../../../services/store/storetypes";
 
 const router = useRouter();
 

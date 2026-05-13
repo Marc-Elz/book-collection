@@ -1,15 +1,7 @@
-import { storeModuleFactory } from '../../services/store';
+import { storeModuleFactory } from "../../services/store";
+import { bookType } from "../../services/store/storetypes";
 
-// TODO use typing in storemodulefacotry
-export interface bookType {
-    id: number;
-    title: string;
-    summary: string;
-    author_id: number;
-}
-
-const bookStore = storeModuleFactory('books');
-
+const bookStore = storeModuleFactory("books");
 
 export const getAllBooks = bookStore.getters.all;
 export const getBookById = bookStore.getters.getById;
@@ -18,14 +10,17 @@ export const fetchBooks = async () => {
     return await bookStore.actions.getAll();
 };
 
-export const createBook = async (newBook:bookType) => {
+export const createBook = async (newBook: bookType) => {
     return await bookStore.actions.create(newBook);
 };
 
-export const updateBook = async (id:number|string|string[], updatedBook:bookType) => {
+export const updateBook = async (
+    id: number | string,
+    updatedBook: bookType,
+) => {
     return await bookStore.actions.update(id, updatedBook);
 };
 
-export const deleteBook = async (id:number) => {
+export const deleteBook = async (id: number) => {
     return await bookStore.actions.delete(id);
 };

@@ -1,11 +1,5 @@
 import { storeModuleFactory } from "../../services/store";
-
-export interface reviewType {
-    id: number;
-    title: string;
-    content: string;
-    book_id: number;
-}
+import { reviewType } from "../../services/store/storetypes";
 
 const reviewStore = storeModuleFactory("reviews");
 
@@ -21,7 +15,7 @@ export const createReview = async (newReview: reviewType) => {
 };
 
 export const updateReview = async (
-    id: number | string | string[],
+    id: number | string,
     updatedReview: reviewType,
 ) => {
     return await reviewStore.actions.update(id, updatedReview);

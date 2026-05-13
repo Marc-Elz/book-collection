@@ -1,23 +1,25 @@
-import { ref, computed } from 'vue';
-import { getRequest, postRequest, putRequest, deleteRequest} from '../http';
+import { ref, computed } from "vue";
+import { getRequest, postRequest, putRequest, deleteRequest } from "../http";
+import { storeType } from "./storetypes";
 
 export const storeModuleFactory = (moduleName: any) => {
     const state = ref<any>({});
 
     const getters = {
         all: computed(() => state.value),
-        
-        getById: (id) => computed(() => state.value[id])
+
+        getById: (id: number | string) => computed(() => state.value[id]),
     };
 
     const setters = {
-        setAll: (items:any) => {
-            for (const item of items) state.value[item.id] = Object.freeze(item);
+        setAll: (items: [storeType]) => {
+            for (const item of items)
+                state.value[item.id] = Object.freeze(item);
         },
 
-        deleteByItem: (item) => {
+        deleteByItem: (item: storeType) => {
             delete state.value[item.id];
-        }
+        },
     };
 
     const actions = {
@@ -27,26 +29,23 @@ export const storeModuleFactory = (moduleName: any) => {
             setters.setAll(data);
         },
 
-        create: async (item) => {
+        create: async (item: storeType) => {
             const { data } = await postRequest(moduleName, item);
             if (!data) return;
             setters.setAll(data);
         },
 
-        update: async (id, item) => {
+        update: async (id: number | string, item: storeType) => {
             const { data } = await putRequest(`${moduleName}/${id}`, item);
             if (!data) return;
             setters.setAll(data);
         },
 
-        delete: async (id) => {
+        delete: async (id: number) => {
             await deleteRequest(`${moduleName}/${id}`);
-            setters.deleteByItem({ id })
-        }
-
-
+            setters.deleteByItem({ id });
+        },
     };
 
     return { getters, setters, actions };
-}
-
+};
