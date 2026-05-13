@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->text('title');
             $table->text('content')->nullable();
             $table->foreignId('book_id');
             $table->timestamps();

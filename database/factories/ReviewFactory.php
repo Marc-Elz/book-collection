@@ -19,6 +19,7 @@ class ReviewFactory extends Factory
     public function definition(): array
     {
         return [
+            'title'  => $this->faker->word,
             'content' => $this->faker->sentence,
             'book_id' => Book::inRandomOrder()->first()->id,
 
