@@ -26,10 +26,5 @@ export const updateAuthor = async (
 };
 
 export const deleteAuthor = async (id: number) => {
-    try {
-        return await authorStore.actions.delete(id);
-    } catch (error: any) {
-        console.error("Error deleting author");
-        throw error;
-    }
+    return await authorStore.actions.delete(id);
 };
