@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Models\Author;
 use App\Models\Book;
 use App\Http\Resources\AuthorResource;
