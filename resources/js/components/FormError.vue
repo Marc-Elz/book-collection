@@ -1,5 +1,5 @@
 <template>
-    <div v-for="error in getErrorByProperty(name).value" :key="error">
+    <div v-for="error in getErrorByProperty(name).value" :key="error" :class="'error-style'"">
         {{ error }}
     </div>
 </template>
