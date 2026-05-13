@@ -1,21 +1,24 @@
-import { computed, ref } from 'vue';
+import { computed, ref } from "vue";
 
 interface ErrorBag {
     [property: string]: string[];
 }
 
 const errorBag = ref<ErrorBag>({});
-const message = ref('');
+const message = ref("");
 
 export const getErrorBag = computed(() => errorBag.value);
 export const getMessage = computed(() => message.value);
 
-export const getErrorByProperty = (property: string) => computed(() => errorBag.value[property]);
+export const getErrorByProperty = (property: string) =>
+    computed(() => errorBag.value[property]);
 
-export const setErrorBag = (bag: ErrorBag) => {(errorBag.value = bag); console.log(errorBag.value)};
+export const setErrorBag = (bag: ErrorBag) => {
+    errorBag.value = bag;
+};
 export const setMessage = (newMessage: string) => {
-    message.value = newMessage || 'Er is een fout opgetreden.';
+    message.value = newMessage || "Er is een fout opgetreden.";
 };
 
 export const destroyErrors = () => (errorBag.value = {});
-export const destroyMessage = () => (message.value = '');
+export const destroyMessage = () => (message.value = "");
