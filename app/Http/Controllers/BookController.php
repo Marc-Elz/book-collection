@@ -6,7 +6,6 @@ use App\Http\Requests\StoreBookRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Models\Book;
 use App\Http\Resources\BookResource;
-use Illuminate\Support\Facades\Log;
 
 
 class BookController extends Controller
@@ -20,7 +19,6 @@ class BookController extends Controller
     {
         $book = Book::create($request->validated());
         info('Hellow world info');
-        Log::info('This is an info log');
 
 
         $books = Book::all();
