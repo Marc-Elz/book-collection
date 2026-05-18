@@ -11,7 +11,7 @@ export const fetchAuthors = async () => {
 };
 
 export const createAuthor = async (newAuthor: authorType) => {
-    return authorStore.actions.create(newAuthor);
+    return await authorStore.actions.create(newAuthor);
 };
 
 export const updateAuthor = async (

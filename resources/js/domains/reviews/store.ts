@@ -11,7 +11,7 @@ export const fetchReviews = async () => {
 };
 
 export const createReview = async (newReview: reviewType) => {
-    return reviewStore.actions.create(newReview);
+    return await reviewStore.actions.create(newReview);
 };
 
 export const updateReview = async (
